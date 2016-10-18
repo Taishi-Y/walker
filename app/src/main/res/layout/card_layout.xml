@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/iv_food"
+            android:src="@drawable/cjandtaishi"/>
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/iv_food2"
+            android:src="@drawable/cjandtaishi"/>
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/iv_food3"
+            android:src="@drawable/cjandtaishi"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/iv_food4"
+                android:src="@drawable/cjandtaishi"/>
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/iv_food5"
+                android:src="@drawable/cjandtaishi"/>
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/iv_food6"
+                android:src="@drawable/cjandtaishi"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/iv_food7"
+                android:src="@drawable/cjandtaishi"/>
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/iv_food8"
+                android:src="@drawable/cjandtaishi"/>
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/iv_food9"
+                android:src="@drawable/cjandtaishi"/>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_centerVertical="true"
+                android:textSize="20dp"
+                android:text="Restaurant Name"
+                />
+
+            <TextView
+                android:id="@+id/tv_venue_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="8dp"
+                android:background="@drawable/layout_rounded_bg"
+                android:layout_alignParentRight="true"
+                android:textSize="20dp"
+                android:text="8.0"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Japanese"
+                android:id="@+id/tv_category"/>
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:gravity="right"-->
+                <!--&gt;-->
+
+                <ImageView
+                    android:id="@+id/iv_coin_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/icon_coin_4"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="4dp"
+                    />
+            <!--</LinearLayout>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:gravity="end"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:src="@mipmap/ic_launcher"-->
+                <!--android:id="@+id/imageView2"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="right"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:text="¥¥¥"-->
+                <!--android:id="@+id/tv_price_howmuch"/>-->
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_walk_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_directions_walk_black_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="4dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="152m"
+                android:id="@+id/tv_distance"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_reviwed_user"-->
+                <!--android:layout_width="32dp"-->
+                <!--android:layout_height="32dp"-->
+                <!--android:src="@mipmap/ic_launcher"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_margin="4dp"-->
+                <!--/>-->
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/iv_reviwed_user"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="4dp"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text=""
+                android:id="@+id/tv_tip"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
