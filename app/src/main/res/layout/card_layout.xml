@@ -132,17 +132,11 @@
                 android:text="Japanese"
                 android:id="@+id/tv_category"/>
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="24dp"-->
-                <!--android:gravity="right"-->
-                <!--&gt;-->
-
                 <ImageView
                     android:id="@+id/iv_coin_icon"
                     android:layout_width="100dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/icon_coin_4"
+                    android:src="@drawable/coin_1"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="4dp"

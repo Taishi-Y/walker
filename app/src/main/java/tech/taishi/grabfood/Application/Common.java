@@ -2,8 +2,12 @@ package tech.taishi.grabfood.Application;
 
 import android.app.Application;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 import tech.taishi.grabfood.Model.Explore.Item_;
 import tech.taishi.grabfood.R;
@@ -38,10 +42,21 @@ public class Common extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		// The Realm file will be located in Context.getFilesDir() with name "default.realm"
+//		Realm.init(this);
+//		RealmConfiguration config = new RealmConfiguration.Builder().build();
+//		Realm.setDefaultConfiguration(config);
+
 		CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
 				.setDefaultFontPath("fonts/Lato/Lato-Regular.ttf")
 				.setFontAttrId(R.attr.fontPath)
 				.build()
 		);
+	}
+
+	@Override
+	public void onTerminate() {
+		super.onTerminate();
+//		ActiveAndroid.dispose();
 	}
 }

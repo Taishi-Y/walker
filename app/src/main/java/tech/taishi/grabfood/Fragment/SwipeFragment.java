@@ -12,25 +12,33 @@ import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import com.facebook.Profile;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.wenchao.cardstack.CardStack;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import retrofit2.Call;
-import tech.taishi.grabfood.Activity.SwipeActivity;
 import tech.taishi.grabfood.Adapter.ItemCardsDataAdapter;
 import tech.taishi.grabfood.Animation.FloatingAnimationListener;
-import tech.taishi.grabfood.Application.Common;
+
+import tech.taishi.grabfood.FirebaseModel.FavoriteItem;
 import tech.taishi.grabfood.Listener.SwipeCardListener;
 import tech.taishi.grabfood.Model.Explore.Explore;
 import tech.taishi.grabfood.Model.Explore.Group;
 import tech.taishi.grabfood.Model.Explore.Item_;
 import tech.taishi.grabfood.Model.Photo.Photos;
 import tech.taishi.grabfood.R;
+
 import tech.taishi.grabfood.Service.FourSquareService;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +51,7 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 	String clientId = "UHXRWJ5JG10S55CR3B5ABEWEBKOKEIEJZRAE1NUS4ZKMJKR4";
 	String clientSecret = "NTOBJSYD20GQF5ISUMGB5S32RVWJ5ANQQSB3CTU2UJBJIH4J";
 	String apiVersion = "20161010";
-	int numberOfRequestVenue = 10;
+	int numberOfRequestVenue = 2;
 
 	String geoLocation,query;
 
@@ -54,7 +62,14 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 	int swipeCount;
 	List<Item_> itemList;
 	List<Item_> likedItemList;
+	int totalResults;
 
+	FavoriteItem favoriteItem;
+
+	String facebookUserId;
+
+
+	private DatabaseReference mDatabase;
 
 	public SwipeFragment() {
 		// Required empty public constructor
@@ -69,6 +84,7 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 		geoLocation = bundle.getString("G");
 		query = bundle.getString("Q");
 
+		facebookUserId = Profile.getCurrentProfile().getId();
 
 		if(!(geoLocation.isEmpty()) && !(query.isEmpty())){
 			geoLocation = bundle.getString("G");
@@ -77,6 +93,8 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 			Log.v("geoLocation",geoLocation);
 			Log.v("query",query);
 		}
+
+		mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -111,44 +129,80 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 
 	@Override
 	public boolean swipeEnd(int direction, float distance) {
-		if(direction == 1 || direction ==3 && distance >300){
+//		if(direction == 1 || direction ==3 && distance >300){
+//			ivWalkBg.startAnimation(animation1);
+//			likedItemList.add(itemList.get(swipeCount));
+//		} else {
+//		}
+
+		Log.v("totalResults", String.valueOf(totalResults));
+		return (distance>600)? true : false;
+	}
+
+	@Override
+	public boolean swipeStart(int direction, float distance) {
+
+		return false;
+	}
+
+	@Override
+	public boolean swipeContinue(int direction, float distanceX, float distanceY) {
+
+		return false;
+	}
+
+	@Override
+	public void discarded(int id, int direction) {
+
+		if(direction == 1 || direction ==3){
 			ivWalkBg.startAnimation(animation1);
 			likedItemList.add(itemList.get(swipeCount));
+
+			String venueId = itemList.get(swipeCount).getVenue().getId();
+			String venueName = itemList.get(swipeCount).getVenue().getName();
+			String venueLocation = itemList.get(swipeCount).getVenue().getLocation().getLat() + "," + itemList.get(swipeCount).getVenue().getLocation().getLng();
+			writeNewPost(facebookUserId,venueId,venueName, venueLocation);
+
 		} else {
 		}
-		swipeCount ++;
 
-		if(swipeCount == 9){
+		if(swipeCount >= totalResults-1){
+
+			Bundle bundle = new Bundle();
 			SearchFragment fragment = new SearchFragment();
-//			fragment.setArguments(bundle);
-
-// FragmentをFragmentManagerにセットする
+			fragment.setArguments(bundle);
+			// FragmentをFragmentManagerにセットする
 			getFragmentManager().beginTransaction()
 					.replace(R.id.container, fragment)
 					.commit();
+
+
 		}
-		return (distance>300)? true : false;
-	}
-
-	@Override
-	public boolean swipeStart(int i, float v) {
-		return false;
-	}
-
-	@Override
-	public boolean swipeContinue(int i, float v, float v1) {
-		return false;
-	}
-
-	@Override
-	public void discarded(int i, int i1) {
-
+		swipeCount ++;
+		Log.v("swipeCount", String.valueOf(swipeCount));
 	}
 
 	@Override
 	public void topCardTapped() {
 
 	}
+
+	private void writeNewPost(String userId, String placeId, String title, String geoLocation) {
+		// Create new post at /user-posts/$userid/$postid and at
+		// /posts/$postid simultaneously
+		String users_favorite_items_key = mDatabase.child("users_favorite_items").push().getKey();
+		String user_favorite_item_key = mDatabase.child(facebookUserId).push().getKey();
+		FavoriteItem favoriteItem = new FavoriteItem(userId, placeId, title, geoLocation);
+		Map<String, Object> favoriteItemValues = favoriteItem.toMap();
+
+		Map<String, Object> childUpdates = new HashMap<>();
+		childUpdates.put("/users_favorite_items/" + facebookUserId + "/" + user_favorite_item_key, favoriteItemValues);
+//		childUpdates.put("/user-posts/" + userId + "/" + key, favoriteItemValues);
+
+		mDatabase.updateChildren(childUpdates);
+	}
+
+/*	Hello! My name is */
 
 	public class ExploreAndPhotoAsyncTask extends AsyncTask<Void,Void,List<Item_>> {
 
@@ -172,7 +226,7 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 				Explore explore =  call.execute().body();
 
 				Log.v("explore", String.valueOf(explore));
-				int totalResults = explore.getResponse().getTotalResults();
+				totalResults = explore.getResponse().getTotalResults();
 
 				List<Group> groupList = explore.getResponse().getGroups();
 				itemList = groupList.get(0).getItems();

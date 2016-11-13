@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import tech.taishi.grabfood.Activity.SearchActivity;
 import tech.taishi.grabfood.Activity.SwipeActivity;
@@ -121,7 +123,7 @@ public class SearchFragment extends Fragment
 
 // FragmentをFragmentManagerにセットする
 					getFragmentManager().beginTransaction()
-							.replace(R.id.container, fragment)
+							.replace(R.id.container_main, fragment)
 							.commit();
 
 					return true;
@@ -143,6 +145,9 @@ public class SearchFragment extends Fragment
 
 			geoLocation = mLastLocation.getLatitude() + "," + mLastLocation.getLongitude();
 
+			Log.v("LOCATION","location???");
+			Log.v("LOCATION",geoLocation);
+
 		}
 	}
 
@@ -160,12 +165,12 @@ public class SearchFragment extends Fragment
 
 	@Override
 	public void onConnectionSuspended(int i) {
-
+		Log.v("LOCATION","connectionFailed");
 	}
 
 	@Override
 	public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+		Log.v("LOCATION","onConnectionSuspended");
 	}
 
 	void permissionCheck(){

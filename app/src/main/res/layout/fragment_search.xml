@@ -7,14 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scaleType="centerCrop"
-
-    tools:context="tech.taishi.grabfood.Activity.SearchActivity">
+    >
     <ImageView
         android:id="@+id/myImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-        android:src="@drawable/gradation_bg"
+        android:background="@color/tabBackground"
+
         android:scaleType="centerCrop"/>
     <TextView
         android:id="@+id/tv_title"
@@ -72,8 +71,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_breakfast"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/tabBackground"
+            android:backgroundTint="@color/white"
             />
 
         <Button
@@ -82,8 +81,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_lunch"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColor="@color/tabBackground"
+            android:backgroundTint="@color/white"/>
 
         <Button
             android:text="Dinner"
@@ -91,8 +90,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_dinner"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColor="@color/tabBackground"
+            android:backgroundTint="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
@@ -114,8 +113,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_cafe"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColor="@color/tabBackground"
+            android:backgroundTint="@color/white"/>
 
         <Button
             android:text="sweet"
@@ -123,8 +122,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_sweet"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColor="@color/tabBackground"
+            android:backgroundTint="@color/white"/>
 
         <Button
             android:text="fastfood"
@@ -132,8 +131,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_fastfood"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColor="@color/tabBackground"
+            android:backgroundTint="@color/white"/>
     </LinearLayout>
 
 </RelativeLayout>

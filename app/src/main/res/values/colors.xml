@@ -8,6 +8,8 @@
     <color name="colorPrimaryDark">#ED4264</color>
     <color name="colorAccent">#FFEDBC</color>
 
+    <color name="tabBackground">#F53B3C</color>
+    <color name="tabBackgroundDark">#C12D2D</color>
 
     <!--http://uigradients.com/#Peach-->
 
@@ -18,6 +20,9 @@
     <color name="pink">#E75764</color>
     <color name="yellow">#FFEB3B</color>
     <color name="white">#FFF</color>
+
+
+
 
 
     <!--<color name="colorPrimary">#3F51B5</color>-->

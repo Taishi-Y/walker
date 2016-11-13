@@ -11,6 +11,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import tech.taishi.grabfood.Model.Explore.Explore;
+import tech.taishi.grabfood.Model.Favorite.Favorite;
 import tech.taishi.grabfood.Model.Photo.Photos;
 
 /**
@@ -33,18 +34,18 @@ public interface FourSquareService {
 			@Query("query") String query,
 			@Query("sortByDistance") int sortByDistance);
 
-
-
-
-//	v=20130815
-
-
 //	https://api.foursquare.com/v2/venues/51eabef6498e10cf3aea7942/photos?oauth_token=MJZ4MKUF1UTW3VB5FO13OWKPRS3FD3NHQD4SFWS2QNB1BVKG&v=20160924
-
 //	https://irs1.4sqi.net/img/general/100x100/63892328_N0A_9qgk0N30lHiqDWIRtNb-0YfO84BIxHc9SP7h4rY.jpg
 
 	@GET("venues/{venue_id}/photos/")
 	Call<Photos> requestPhotos(
+			@Path("venue_id") String venue_id,
+			@Query("client_id") String client_id,
+			@Query("client_secret") String client_secret,
+			@Query("v") String v);
+
+	@GET("venues/{venue_id}/")
+	Call<Favorite> requestFavorite(
 			@Path("venue_id") String venue_id,
 			@Query("client_id") String client_id,
 			@Query("client_secret") String client_secret,

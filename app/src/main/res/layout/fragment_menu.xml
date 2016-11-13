@@ -2,7 +2,6 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              tools:context="tech.taishi.grabfood.Fragment.MenuFragment"
               android:orientation="horizontal">
     <SearchView
         android:id="@+id/sv_food"
