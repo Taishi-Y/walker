@@ -12,14 +12,10 @@
         android:id="@+id/container_main"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="80" />
-    <!--<FrameLayout-->
-        <!--android:id="@android:id/content"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom"-->
-        <!--android:background="@color/colorAccent"-->
-        <!--android:layout_weight="20" />-->
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/tab_below"
+        />
+
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,7 +24,8 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
-        android:weightSum="300">
+        android:id="@+id/tab_below"
+        android:weightSum="200">
 
         <RelativeLayout
             android:id="@+id/rl_search"
@@ -63,20 +60,20 @@
                 app:srcCompat="@drawable/ic_favorite_border_white_24dp"
                 android:id="@+id/iv_tab_favorite"/>
         </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rl_map"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="100"
-            android:background="@color/tabBackgroundDark">
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_map_white_24dp"
-                android:id="@+id/iv_tav_map"/>
-        </RelativeLayout>
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rl_map"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="100"-->
+            <!--android:background="@color/tabBackgroundDark">-->
+            <!--<ImageView-->
+                <!--android:layout_width="28dp"-->
+                <!--android:layout_height="28dp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--app:srcCompat="@drawable/ic_map_white_24dp"-->
+                <!--android:id="@+id/iv_tav_map"/>-->
+        <!--</RelativeLayout>-->
 
     </LinearLayout>
 </RelativeLayout>

@@ -65,6 +65,8 @@ dependencies {
     compile 'com.github.satyan:sugar:1.4'
 
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    compile 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
 }
 apply plugin: 'com.google.gms.google-services'
 //apply plugin: 'realm-android'

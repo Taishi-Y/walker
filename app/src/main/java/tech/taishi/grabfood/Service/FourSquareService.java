@@ -57,10 +57,4 @@ public interface FourSquareService {
 			.addConverterFactory(GsonConverterFactory.create())
 			.build();
 
-//	https://medium.freecodecamp.com/rxandroid-and-retrofit-2-0-66dc52725fff#.dor7xn3tq
-//	Retrofit retrofitRxJava = new Retrofit.Builder()
-//			.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-//			.addConverterFactory(GsonConverterFactory.create())
-//			.baseUrl("https://api.foursquare.com/v2/")
-//			.build();
 }

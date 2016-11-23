@@ -4,8 +4,8 @@
     <!--<color name="colorPrimary">#FFA726</color>-->
     <!--<color name="colorPrimaryDark">#FF9800</color>-->
     <!--<color name="colorAccent">#EC407A</color>-->
-    <color name="colorPrimary">#ED4264</color>
-    <color name="colorPrimaryDark">#ED4264</color>
+    <color name="colorPrimary">#C12D2D</color>
+    <color name="colorPrimaryDark">#C12D2D</color>
     <color name="colorAccent">#FFEDBC</color>
 
     <color name="tabBackground">#F53B3C</color>

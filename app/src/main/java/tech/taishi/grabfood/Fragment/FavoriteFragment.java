@@ -1,6 +1,7 @@
 package tech.taishi.grabfood.Fragment;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import com.facebook.Profile;
@@ -29,6 +31,7 @@ import java.util.List;
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
+import tech.taishi.grabfood.Activity.WebViewActivity;
 import tech.taishi.grabfood.Adapter.FavoriteListAdapter;
 import tech.taishi.grabfood.Adapter.ItemCardsDataAdapter;
 //import tech.taishi.grabfood.Database.FavoriteItem;
@@ -88,6 +91,14 @@ public class FavoriteFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 				Object listItem = listView.getItemAtPosition(i);
+				listItem.toString();
+				Log.v("test",listItem.toString());
+
+
+				String placeId = responseList.get(i).getVenue().getId();
+				Intent intent = new Intent(getActivity(), WebViewActivity.class);
+				intent.putExtra("PLACEID",placeId);
+				startActivity(intent);
 			}
 		});
 
@@ -95,8 +106,8 @@ public class FavoriteFragment extends Fragment {
 //		atClass.execute();
 
 
-//		mDatabase.child("users_favorite_items/"+ Profile.getCurrentProfile().getId() +"/").addValueEventListener(postListener);
-		mDatabase.child("users_favorite_items/191791917944932/").addValueEventListener(postListener);
+		mDatabase.child("users_favorite_items/"+ Profile.getCurrentProfile().getId() +"/").addValueEventListener(postListener);
+//		mDatabase.child("users_favorite_items/191791917944932/").addValueEventListener(postListener);
 
 		return v;
 	}
@@ -175,7 +186,6 @@ public class FavoriteFragment extends Fragment {
 			super.onPostExecute(favorites);
 			FavoriteListAdapter favoriteListAdapter = new FavoriteListAdapter(getActivity(), R.layout.favorite_list, responseList);
 			listView.setAdapter(favoriteListAdapter);
-
 
 		}
 	}

@@ -4,6 +4,7 @@ package tech.taishi.grabfood.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,7 +52,7 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 	String clientId = "UHXRWJ5JG10S55CR3B5ABEWEBKOKEIEJZRAE1NUS4ZKMJKR4";
 	String clientSecret = "NTOBJSYD20GQF5ISUMGB5S32RVWJ5ANQQSB3CTU2UJBJIH4J";
 	String apiVersion = "20161010";
-	int numberOfRequestVenue = 2;
+	int numberOfRequestVenue = 10;
 
 	String geoLocation,query;
 
@@ -169,7 +170,7 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 		if(swipeCount >= totalResults-1){
 
 			Bundle bundle = new Bundle();
-			SearchFragment fragment = new SearchFragment();
+			FavoriteFragment fragment = new FavoriteFragment();
 			fragment.setArguments(bundle);
 			// FragmentをFragmentManagerにセットする
 			getFragmentManager().beginTransaction()
@@ -201,6 +202,15 @@ public class SwipeFragment extends Fragment implements CardStack.CardEventListen
 
 		mDatabase.updateChildren(childUpdates);
 	}
+
+//	void favoriteSwipte(){
+//		String venueId = itemList.get(swipeCount).getVenue().getId();
+//		String venueName = itemList.get(swipeCount).getVenue().getName();
+//		String venueLocation = itemList.get(swipeCount).getVenue().getLocation().getLat() + "," + itemList.get(swipeCount).getVenue().getLocation().getLng();
+//		String venueCategory = itemList.get(swipeCount).getVenue().getCategories().
+//
+//		writeNewPost(facebookUserId,venueId,venueName, venueLocation);
+//	}
 
 /*	Hello! My name is */
 

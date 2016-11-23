@@ -37,8 +37,8 @@ public class FavoriteListAdapter extends ArrayAdapter<Response> {
 		Log.v("aaa", String.valueOf(response));
 
 		String name = response.getVenue().getName();
-		Log.v("aaa", String.valueOf(name));
-
+		String categoryName = response.getVenue().getCategories().get(0).getName();
+		String point = response.getVenue().getRating().toString();
 
 
 		// convertViewは使い回しされている可能性があるのでnullの時だけ新しく作る
@@ -46,14 +46,21 @@ public class FavoriteListAdapter extends ArrayAdapter<Response> {
 			convertView = layoutInflater_.inflate(R.layout.favorite_list, null);
 		}
 
-		// CustomDataのデータをViewの各Widgetにセットする
-//		ImageView imageView;
-//		imageView = (ImageView)convertView.findViewById(R.id.image);
-////		imageView.setImageBitmap(item.getImageData());
+		TextView tvName = (TextView)convertView.findViewById(R.id.tv_favorite_name);
+		TextView tvCategoryName = (TextView) convertView.findViewById(R.id.tv_favorite_category);
+		TextView tvDistance = (TextView) convertView.findViewById(R.id.tv_distance);
+//		TextView tvComment = (TextView) convertView.findViewById(R.id.tv_favorite_comment);
+		TextView tvPoint = (TextView) convertView.findViewById(R.id.tv_favorite_point);
+		ImageView ivFavoriteImage = (ImageView) convertView.findViewById(R.id.iv_favorite_image);
+//		ImageView ivFavoritePrice = (ImageView) convertView.findViewById(R.id.iv_favorite_price);
 
-		TextView textView;
-		textView = (TextView)convertView.findViewById(R.id.tv_favorite_name);
-		textView.setText(name);
+
+
+
+		tvName.setText(name);
+		tvCategoryName.setText(categoryName);
+		tvPoint.setText(point);
+
 
 		return convertView;
 	}
